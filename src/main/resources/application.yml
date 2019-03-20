@@ -1,18 +1,23 @@
 spring:
   profiles:
     active: local
-  jpa:
-    show-sql: false
+
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
   datasource:
     hikari:
       transaction-isolation: TRANSACTION_READ_COMMITTED
 
-gtm.data.set: gtm_log_dev
-logging:
-  config: classpath:logback-spring.xml
+---
+
+spring:
+  profiles: local
+  jpa:
+    show-sql: true
+  h2:
+    console:
+      enabled: true
