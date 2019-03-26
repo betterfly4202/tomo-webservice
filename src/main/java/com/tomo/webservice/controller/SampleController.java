@@ -3,9 +3,7 @@ package com.tomo.webservice.controller;
 import com.tomo.webservice.domain.SampleRepository;
 import com.tomo.webservice.domain.SampleSaveRequestDTO;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by betterfly
@@ -17,6 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleController {
 
     private SampleRepository repository;
+
+    @CrossOrigin(origins = "http://localhost:18080")
+    @GetMapping("/login")
+    public String cors(){
+        return "CROS login®...";
+    }
 
     @PostMapping("/save/sample")
     public void saveSample(@RequestBody SampleSaveRequestDTO dto) {
